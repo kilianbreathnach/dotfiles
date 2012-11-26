@@ -1,0 +1,5 @@
+For vim, if possible, add plugins and such as git submodules with the command
+
+git submodule add <repository_url> <path(usually_bundle)/directory_name>
+
+executed in the top of the repository tree, i.e. in dotfiles/
