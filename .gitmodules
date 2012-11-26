@@ -16,3 +16,6 @@
 [submodule "vim/pathogen"]
 	path = vim/pathogen
 	url = git://github.com/tpope/vim-pathogen.git
+[submodule "vim/screen"]
+	path = vim/screen
+	url = git://github.com/ervandew/screen.git
