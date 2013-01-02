@@ -31,7 +31,8 @@ set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
 
 " Searching dfm-style
 set ignorecase			" Default to using case insensitive searches,
-set smartcase			" unless uppercase letters are used in the regex.
+set smartcase			" unless uppercase letters are used in the
+                                " regex.
 set hlsearch			" Highlight searches by default.
 set incsearch			" Incrementally search while typing a /regex
 
@@ -129,6 +130,12 @@ vmap <leader>y ygv\\P
 " Source some special settings for python and C to comply with PEP 8
 so ~/.vim/pythonvimrc
 
+" Screen stuff
+" ------------
+
+let g:ScreenImpl = 'Tmux'
+map <F4> :ScreenShellVertical
+map <F8> :ScreenSend<Enter>
 
 " Vim-latex stuff
 " ---------------
@@ -145,7 +152,6 @@ set grepprg=grep\ -nH\ $*
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
-let g:ScreenShellGnuScreenVerticalSupport = 'native'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdflatex="pdflatex -shell-escape % %S" -pdf $*'
 
