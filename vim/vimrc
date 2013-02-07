@@ -51,8 +51,12 @@ set showcmd			" Display incomplete commands
 
 " This section turns on line-numbering that is toggled with F2
 set numberwidth=3
-highlight LineNr ctermbg=darkmagenta
+highlight LineNr ctermbg=lightblue
 map <F2> :set invnumber<cr>
+
+" Here's for rainbow parentheses (default on)
+:RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesToggle
 
 " Enable mouse-clicking
 if has('mouse')

@@ -10,6 +10,12 @@ export PATH
 PATH=/usr/lib/postgresql/9.1/bin:$PATH
 export PATH
 
+# adding opt stuff
+PATH=/opt/calibre:$PATH
+export LC_ALL=C
+
+# for limp in vim
+export LIMPRUNTIME=$HOME/.vim/bundle/limp-0.3.4
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
