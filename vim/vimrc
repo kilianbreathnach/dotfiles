@@ -134,6 +134,10 @@ vmap <leader>y ygv\\P
 " Source some special settings for python and C to comply with PEP 8
 so ~/.vim/pythonvimrc
 
+" Make short tabs for html format
+au BufRead,BufNewFile *html set shiftwidth=2
+
+
 " Screen stuff
 " ------------
 
