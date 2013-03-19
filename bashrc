@@ -14,8 +14,11 @@ export PATH
 PATH=/opt/calibre:$PATH
 export LC_ALL=C
 
-# for limp in vim
-export LIMPRUNTIME=$HOME/.vim/bundle/limp-0.3.4
+# piece for lein for slimv
+PATH=~/.bash/opt:$PATH
+export PATH
+
+
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -40,6 +43,8 @@ shopt -s checkwinsize
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
+
+
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -78,6 +83,17 @@ xterm*|rxvt*)
     ;;
 esac
 
+
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -95,18 +111,10 @@ alias ll='ls -l'
 alias la='ls -A'
 #alias l='ls -CF'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-
-
-alias eam='emacs -nw'
 
 
 # enable programmable completion features (you don't need to enable
@@ -121,7 +129,4 @@ fi
 PS1_OLD=$PS1
 
 PS1='\W $ '
-
-
-
 
