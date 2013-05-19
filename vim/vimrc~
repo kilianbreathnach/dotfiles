@@ -12,11 +12,10 @@
 " cat greeting:
 echo ">^.^<___(mao!)"
 
-" Make use of Tim Pope's plugin manager
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" Vundle and bundles configuration
+so ~/.vim/bundles.vim
 
+set hidden
 set nocompatible		" Use Vim settings.
 set title
 set backspace=indent,eol,start  " Allow backspacing over everything in insert
@@ -28,6 +27,8 @@ set linebreak
 set wrap
 set colorcolumn=79
 set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
+
+colorscheme Tomorrow
 
 " Searching dfm-style
 set ignorecase			" Default to using case insensitive searches,
@@ -137,6 +138,10 @@ so ~/.vim/pythonvimrc
 " Make short tabs for html format
 au BufRead,BufNewFile *html set shiftwidth=2
 
+" Start up Slime for lisp files
+let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/Repositories/slime/start-swank.lisp &'
+" get rainbow parens for lisp
+let g:lisp_rainbow=1
 
 " Screen stuff
 " ------------
@@ -144,6 +149,7 @@ au BufRead,BufNewFile *html set shiftwidth=2
 let g:ScreenImpl = 'Tmux'
 map <F4> :ScreenShellVertical<Enter>
 map <F8> :ScreenSend<Enter>
+
 
 " Vim-latex stuff
 " ---------------
