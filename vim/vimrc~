@@ -169,3 +169,8 @@ let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdflatex="pdflatex -shell-escape % %S" -pdf $*'
 
+
+" NERDtree stuff
+" --------------
+
+autocmd vimenter * NERDTree

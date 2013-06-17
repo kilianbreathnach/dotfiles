@@ -44,6 +44,11 @@ export PYTHONPATH
 PYTHONPATH=${PYTHONPATH}:/home/kilian/.local/lib
 export PYTHONPATH
 
+# Include basemap
+PYTHONPATH=${PYTHONPATH}:/home/kilian/download/basemap-1.0.5/lib
+export PYTHONPATH
+
+
 # end broiler stuff
 
 

@@ -21,5 +21,12 @@ Bundle "chriskempson/tomorrow-theme"
 Bundle "sjl/vim-sparkup"
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/UltiSnips"
+Bundle "Valloric/YouCompleteMe"
+Bundle "vim-scripts/The-NERD-tree"
 
 filetype plugin indent on      " required!
+
+" Install configured bundles:
+" ---------------------------
+" Launch vim, run :BundleInstall (or vim +BundleInstall +qall for CLI lovers)
+
