@@ -152,6 +152,8 @@ alias ......='cd ../../..'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# new vim alias for custom install
+alias myvim='/home/kilian/.local/usr/bin/vim'
 
 
 # enable programmable completion features (you don't need to enable
@@ -167,3 +169,10 @@ PS1_OLD=$PS1
 
 PS1='\W $ '
 
+
+# stuff for ruby
+export PATH="$HOME/.local/bin:$HOME/.gem/bin:$PATH"
+export RUBYLIB="$HOME/.local/lib:$RUBYLIB"
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="/usr/lib/ruby/1.8:$GEM_HOME"
+alias gem="nice -n19 ~/.local/bin/gem"
