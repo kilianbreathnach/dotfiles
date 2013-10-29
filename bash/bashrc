@@ -176,3 +176,6 @@ export RUBYLIB="$HOME/.local/lib:$RUBYLIB"
 export GEM_HOME="$HOME/.gem"
 export GEM_PATH="/usr/lib/ruby/1.8:$GEM_HOME"
 alias gem="nice -n19 ~/.local/bin/gem"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

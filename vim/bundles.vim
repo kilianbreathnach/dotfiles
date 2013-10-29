@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle "thisivan/vim-bufexplorer"
 Bundle "wincent/Command-T"
+Bundle "scrooloose/nerdtree"
 Bundle "davidhalter/jedi-vim"
 Bundle "scrooloose/syntastic"
 Bundle "kien/rainbow_parentheses.vim"
@@ -22,7 +23,6 @@ Bundle "sjl/vim-sparkup"
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/UltiSnips"
 Bundle "Valloric/YouCompleteMe"
-Bundle "vim-scripts/The-NERD-tree"
 
 filetype plugin indent on      " required!
 

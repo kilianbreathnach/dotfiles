@@ -143,6 +143,13 @@ let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/Repositories/slime/start-swank
 " get rainbow parens for lisp
 let g:lisp_rainbow=1
 
+
+" NERDTree settings
+" -----------------
+
+autocmd vimenter * NERDTree
+
+
 " Screen stuff
 " ------------
 
@@ -170,7 +177,19 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -pdflatex="pdflatex -shell-escape % %S" -pdf $*'
 
 
-" NERDtree stuff
-" --------------
+" Sparkup stuff
+" -------------
 
-autocmd vimenter * NERDTree
+let g:sparkup
+" (Default: 'sparkup')
+" Location of the sparkup executable. You shouldn't need to change this
+" setting if you used the install option above.
+let g:sparkupArgs
+" (Default: '--no-last-newline')
+" Additional args passed to sparkup.
+let g:sparkupExecuteMapping
+" (Default: '<c-e>')
+" Mapping used to execute sparkup.
+let g:sparkupNextMapping
+" (Default: '<c-n>')
+" Mapping used to jump to the next empty tag/attribute.
