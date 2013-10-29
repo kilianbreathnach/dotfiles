@@ -179,3 +179,7 @@ alias gem="nice -n19 ~/.local/bin/gem"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+
+# have the local environment be the first goto for the PATH
+PATH=/home/kilian/.local/bin:$PATH
