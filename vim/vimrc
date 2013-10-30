@@ -56,7 +56,6 @@ highlight LineNr ctermbg=lightblue
 map <F2> :set invnumber<cr>
 
 " Here's for rainbow parentheses (default on)
-:RainbowParenthesesToggle
 au VimEnter * RainbowParenthesesToggle
 
 " Enable mouse-clicking
@@ -150,6 +149,8 @@ let g:lisp_rainbow=1
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeDirArrows=0
+map <C-n> :NERDTreeToggle<CR>
 
 
 " Screen stuff
@@ -182,16 +183,16 @@ let g:Tex_CompileRule_pdf = 'latexmk -pdflatex="pdflatex -shell-escape % %S" -pd
 " Sparkup stuff
 " -------------
 
-let g:sparkup
+let g:sparkup="~/.vim/bundle/vim-sparkup/ftplugin/sparkup.vim"
 " (Default: 'sparkup')
 " Location of the sparkup executable. You shouldn't need to change this
 " setting if you used the install option above.
-let g:sparkupArgs
+let g:sparkupArgs="--no-last-newline"
 " (Default: '--no-last-newline')
 " Additional args passed to sparkup.
-let g:sparkupExecuteMapping
+let g:sparkupExecuteMapping="<leader>e"
 " (Default: '<c-e>')
 " Mapping used to execute sparkup.
-let g:sparkupNextMapping
+let g:sparkupNextMapping="<leader>n"
 " (Default: '<c-n>')
 " Mapping used to jump to the next empty tag/attribute.
