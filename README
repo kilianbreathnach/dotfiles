@@ -1,5 +1,10 @@
-For vim, if possible, add plugins and such as git submodules with the command
+Repository to keep track of changes to bashrc and vimrc that I would like to have
+across all server accounts. The only submodule necessary to update is the vundle
+plugin for vim, but a general command is
 
-git submodule add <repository_url> <path(usually_bundle)/directory_name>
+$ git submodule foreach git pull origin master
 
-executed in the top of the repository tree, i.e. in dotfiles/
+to update changes to master repos of submodules. To update vim options just run
+BundleInstall in vim to make sure plugins are up to date and also follow plugin
+docs for any requiring special treatment.
+

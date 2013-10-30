@@ -2,6 +2,7 @@
 # /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export PATH=$PATH:$HOME/.local/bin
 export GOROOT=$HOME/Software/go
 
 PATH=/usr/local/astrometry/bin:$PATH:$GOROOT/bin
