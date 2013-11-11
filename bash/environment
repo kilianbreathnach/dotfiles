@@ -1,0 +1,70 @@
+export GOROOT=$HOME/Software/go
+
+PATH=/usr/local/astrometry/bin:$PATH:$GOROOT/bin
+export PATH
+
+PATH=/usr/lib/postgresql/9.1/bin:$PATH
+export PATH
+
+# adding opt stuff
+PATH=/opt/calibre:$PATH
+export LC_ALL=C
+
+# piece for lein for slimv
+PATH=~/.bash/opt:$PATH
+export PATH
+
+# adding java so that lein works on broiler
+JAVA_HOME=~/.local/usr/java/jdk1.7.0_17
+PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME
+export PATH
+
+# more PATH stuff for broiler
+
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/wcslib-4.7/lib
+
+export PATH=~/bashscripts:$HOME/astrometry/util:$HOME/astrometry/blind:$PATH
+
+export SBCL_INSTALL=~/.local/opt/mysbcl
+PATH=$SBCL_INSTALL/bin:$PATH
+export SBCL_HOME=$SBCL_INSTALL/lib/sbcl
+export PATH
+
+export DISPLAY=:0
+
+PYTHONPATH=${PYTHONPATH}:/home/kilian:/home/kilian/tractor:/home/kilian/tractor/tractor
+export PYTHONPATH
+
+# Get the path to my new modules
+PYTHONPATH=${PYTHONPATH}:/home/kilian/.local/lib
+export PYTHONPATH
+
+# Include basemap
+PYTHONPATH=${PYTHONPATH}:/home/kilian/download/basemap-1.0.5/lib
+export PYTHONPATH
+
+# Include pyscripts
+PYTHONPATH=${PYTHONPATH}:/home/kilian/dev/pyscripts
+
+# end broiler stuff
+
+
+
+PS1_OLD=$PS1
+
+PS1='\W $ '
+
+# stuff for ruby
+export PATH="$HOME/.local/bin:$HOME/.gem/bin:$PATH"
+export RUBYLIB="$HOME/.local/lib:$RUBYLIB"
+export GEM_HOME="$HOME/.gem"
+export GEM_PATH="/usr/lib/ruby/1.8:$GEM_HOME"
+alias gem="nice -n19 ~/.local/bin/gem"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# splint stuff
+
+export LARCH_PATH="$HOME/.local/share/splint/lib"
+export LCLIMPORTDIR="$HOME/.local.share/splint/import"

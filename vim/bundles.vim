@@ -23,6 +23,11 @@ Bundle "sjl/vim-sparkup"
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/UltiSnips"
 Bundle "Valloric/YouCompleteMe"
+Bundle "Rykka/riv.vim"
+Bundle "jelera/vim-javascript-syntax"
+Bundle "pangloss/vim-javascript"
+Bundle "nathanaelkane/vim-indent-guides"
+Bundle "marijnh/tern_for_vim"
 
 filetype plugin indent on      " required!
 
