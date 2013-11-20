@@ -11,7 +11,6 @@ Bundle 'gmarik/vundle'
 Bundle "thisivan/vim-bufexplorer"
 Bundle "wincent/Command-T"
 Bundle "scrooloose/nerdtree"
-Bundle "davidhalter/jedi-vim"
 Bundle "scrooloose/syntastic"
 Bundle "kien/rainbow_parentheses.vim"
 Bundle "ervandew/screen"
