@@ -30,6 +30,10 @@ set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
 
 colorscheme Tomorrow
 
+" Use Source Code Pro font
+set anti enc=utf-8
+set guifont=SourceCodePro_WebFontsOnly-1.017/EOT/SourceCodePro-Regular.eot
+
 " Searching dfm-style
 set ignorecase			" Default to using case insensitive searches,
 set smartcase			" unless uppercase letters are used in the
@@ -132,7 +136,7 @@ vmap <leader>y ygv\\P
 " ------------------------
 
 " Source some special settings for python and C to comply with PEP 8
-" so ~/.vim/pythonvimrc
+so ~/.vim/pythonvimrc
 
 " Make short tabs for html format
 au BufRead,BufNewFile *html set shiftwidth=2

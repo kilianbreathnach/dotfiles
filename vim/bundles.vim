@@ -17,7 +17,6 @@ Bundle "ervandew/screen"
 Bundle "tpope/vim-fugitive"
 Bundle "vim-scripts/LaTeX-Suite-aka-Vim-LaTeX"
 Bundle "vim-scripts/slimv.vim"
-Bundle "chriskempson/tomorrow-theme"
 Bundle "sjl/vim-sparkup"
 Bundle "tpope/vim-surround"
 Bundle "vim-scripts/UltiSnips"
@@ -27,6 +26,7 @@ Bundle "jelera/vim-javascript-syntax"
 Bundle "pangloss/vim-javascript"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "marijnh/tern_for_vim"
+Bundle "chriskempson/vim-tomorrow-theme"
 
 filetype plugin indent on      " required!
 
