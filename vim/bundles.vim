@@ -27,6 +27,7 @@ Bundle "pangloss/vim-javascript"
 Bundle "nathanaelkane/vim-indent-guides"
 Bundle "marijnh/tern_for_vim"
 Bundle "chriskempson/vim-tomorrow-theme"
+Bundle "bling/vim-airline"
 
 filetype plugin indent on      " required!
 
