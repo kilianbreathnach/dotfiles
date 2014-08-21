@@ -2,6 +2,9 @@
 # /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# get the vim shortcuts in bash
+set -o vi
+
 export GOROOT=$HOME/Software/go
 
 PATH=/usr/local/astrometry/bin:$PATH:$GOROOT/bin
