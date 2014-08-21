@@ -1,15 +1,18 @@
 Repository to keep track of changes to bashrc and vimrc that I would like to have
-across all server accounts. The only submodule necessary to update is the vundle
-plugin for vim. When cloning this repository, also have to run
+across all server accounts.
 
-    $ git submodule init
-    $ git submodule update
+Vundle.vim is used to manage all the vim plugins, which is added here as a subtree named "vundle". It is updated with the command
 
-Then to install all the bundles, run
+    git subtree pull --prefix=vim/bundle/Vundle.vim --squash vundle master
 
-    :BundleInstall
+and any changes to plugins are installed to vim with the command
 
-in vim and also follow any specific plugin installation steps given in docs.
+    vim +PluginInstall +qall
 
-Just need to get the same directory structure going in my accounts now -
-another TODO. May also switch to subtree instead of submodule.
+extra building is required for some of them
+
+* command-t
+* YouCompleteMe
+
+
+TODO: bash configuration needs to be cleaned up a bit but this is more of an issue with my filesystem organisation.

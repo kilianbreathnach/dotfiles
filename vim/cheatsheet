@@ -1,0 +1,18 @@
+Here I'm gonna keep some of the main commands from the plugins and their functions just for personal reference.
+
+Command-T
+---------
+
+* <Leader>-t brings up the file window
+
+
+bufexplorer
+-----------
+
+*
+
+
+surround.vim
+------------
+
+* use `csAB` to change from surroundings A to B
