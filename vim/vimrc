@@ -23,32 +23,32 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Layout stuff: tabs and all that
-Plugin "scrooloose/nerdtree"
-Plugin "wincent/Command-T"
-Plugin "jlanzarotta/bufexplorer"
-Plugin "ervandew/supertab"
-Plugin "bling/vim-airline"
+" layout and appearance
+Plugin 'scrooloose/nerdtree'
+Plugin 'wincent/Command-T'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 
 " Extra handy functionality
-Plugin "ervandew/screen"
-Plugin "Valloric/YouCompleteMe"
-Plugin "tpope/vim-fugitive"
-Plugin "tpope/vim-surround"
-Plugin "vim-scripts/LaTeX-Suite-aka-Vim-LaTeX"
-Plugin "vim-scripts/slimv.vim"
+Plugin 'ervandew/screen'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
+Plugin 'vim-scripts/slimv.vim'
 
 " syntax stuff
-Plugin "scrooloose/syntastic"
-Plugin "kien/rainbow_parentheses.vim"
-Plugin "sjl/vim-sparkup"
-Plugin "vim-scripts/UltiSnips"
-Plugin "Rykka/riv.vim"
-Plugin "jelera/vim-javascript-syntax"
-Plugin "pangloss/vim-javascript"
-Plugin "nathanaelkane/vim-indent-guides"
-Plugin "marijnh/tern_for_vim"
-Plugin "chriskempson/vim-tomorrow-theme"
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'sjl/vim-sparkup'
+Plugin 'vim-scripts/UltiSnipsr'
+Plugin 'Rykka/riv.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guidesr'
+Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,10 +89,13 @@ set smartindent
 set expandtab
 set linebreak
 set wrap
-set colorcolumn=79
+set colorcolumn=79              " to show where to break lines
 set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
 
-colorscheme Tomorrow
+" set theme
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Use Source Code Pro font
 set anti enc=utf-8
