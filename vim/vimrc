@@ -43,11 +43,11 @@ Plugin 'vim-scripts/slimv.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'sjl/vim-sparkup'
-Plugin 'vim-scripts/UltiSnipsr'
+Plugin 'vim-scripts/UltiSnips'
 Plugin 'Rykka/riv.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'nathanaelkane/vim-indent-guidesr'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
 
 " All of your Plugins must be added before the following line
