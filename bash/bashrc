@@ -10,23 +10,28 @@ set -o vi
 ### ENVIRONMENT ###
 ###################
 
+# first see which server I'm on
+
+if [ "$HOSTNAME" = "harmattan" ]; then
+  export pathext="/harmattanhome";
+elif [ "$HOSTNAME" = "SIROCCO.COSMO.FAS.NYU.EDU" ]; then
+  export pathext="/siroccohome";
+else
+  export pathext="";
+fi
+
 ## Python things ##
 
 # virtualenvwrapperstuff
-export WORKON_HOME=$HOME/virtualenvs
+export WORKON_HOME=$HOME$pathext/virtualenvs
 export PROJECT_HOME=$HOME/dev
-source $HOME/bin/virtualenvwrapper.sh
+source $HOME$pathext/bin/virtualenvwrapper.sh
 
 # Get the path to my new modules
-PYTHONPATH=$HOME/lib:${PYTHONPATH}
+PYTHONPATH=$HOME$pathext/lib:${PYTHONPATH}
 export PYTHONPATH
 
-
-
 export GOROOT=$HOME/Software/go
-
-PATH=/usr/local/astrometry/bin:$PATH:$GOROOT/bin
-export PATH
 
 PATH=/usr/lib/postgresql/9.1/bin:$PATH
 export PATH
@@ -35,40 +40,42 @@ export PATH
 PATH=/opt/calibre:$PATH
 export LC_ALL=C
 
-# piece for lein for slimv
-PATH=~/.bash/opt:$PATH
-export PATH
+if [ "$HOSTNAME" = "broiler" ]; then
 
-# adding java so that lein works on broiler
-JAVA_HOME=~/.local/usr/java/jdk1.7.0_17
-PATH=$PATH:$JAVA_HOME/bin
-export JAVA_HOME
-export PATH
+  PATH=/usr/local/astrometry/bin:$PATH:$GOROOT/bin
+  export PATH
 
-# more PATH stuff for broiler
+  # piece for lein for slimv
+  PATH=~/.bash/opt:$PATH
+  export PATH
 
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/wcslib-4.7/lib
+  # adding java so that lein works on broiler
+  JAVA_HOME=~/.local/usr/java/jdk1.7.0_17
+  PATH=$PATH:$JAVA_HOME/bin
+  export JAVA_HOME
+  export PATH
 
-export PATH=~/bashscripts:$HOME/astrometry/util:$HOME/astrometry/blind:$PATH
+  # more PATH stuff for broiler
 
-export SBCL_INSTALL=$HOME/opt/mysbcl
-PATH=$SBCL_INSTALL/bin:$PATH
-export SBCL_HOME=$SBCL_INSTALL/lib/sbcl
-export PATH
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/wcslib-4.7/lib
 
-export DISPLAY=:0
+  export PATH=~/bashscripts:$HOME/astrometry/util:$HOME/astrometry/blind:$PATH
 
-PYTHONPATH=${PYTHONPATH}:/home/kilian:/home/kilian/tractor:/home/kilian/tractor/tractor
-export PYTHONPATH
+  export SBCL_INSTALL=$HOME/opt/mysbcl
+  PATH=$SBCL_INSTALL/bin:$PATH
+  export SBCL_HOME=$SBCL_INSTALL/lib/sbcl
+  export PATH
 
-# Include basemap
-PYTHONPATH=${PYTHONPATH}:/home/kilian/download/basemap-1.0.5/lib
-export PYTHONPATH
+  export DISPLAY=:0
 
+  PYTHONPATH=${PYTHONPATH}:/home/kilian:/home/kilian/tractor:/home/kilian/tractor/tractor
+  export PYTHONPATH
 
-# end broiler stuff
-
-
+  # Include basemap
+  PYTHONPATH=${PYTHONPATH}:/home/kilian/download/basemap-1.0.5/lib
+  export PYTHONPATH
+  # end broiler stuff
+fi
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -101,8 +108,6 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
-
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -139,7 +144,7 @@ alias ......='cd ../../..'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # new vim alias for custom install
-alias vim=$HOME/bin/vim
+alias vim=$HOME$pathext/bin/vim
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -147,11 +152,6 @@ alias vim=$HOME/bin/vim
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-
-
-
-
 
 # stuff for ruby
 export PATH="$HOME/bin:$HOME/.gem/bin:$PATH"
@@ -163,8 +163,25 @@ alias gem="nice -n19 ~/bin/gem"
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/users/kww231/.rvm/rubies/ruby-2.1.2/lib
 
 # have the local environment be the first goto for the PATH and LD_LIBRARY_PATH
-PATH=$HOME/bin:$PATH
+export PATH=$HOME$pathext/bin:$PATH
 
-LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+# and lib and include dirs
+export LD_LIBRARY_PATH=$HOME$pathext/lib64:$HOME$pathext/lib:$LD_LIBRARY_PATH
+
+export C_INCLUDE_PATH=$HOME$pathext/include:$C_INCLUDE_PATH
+
+export CPLUS_INCLUDE_PATH=$HOME$pathext/include:$CPLUS_INCLUDE_PATH
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# java stuff
+JAVA_HOME=$HOME/java/jdk1.8.0_45
+PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME
+export PATH
+
+# hadoopy
+export PATH=$PATH:$HOME/src/hadoop-2.6.0/bin
