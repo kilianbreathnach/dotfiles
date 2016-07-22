@@ -102,11 +102,15 @@ set wrap
 set colorcolumn=79              " to show where to break lines
 set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
 
+set t_Co=16
+
 " set themes
-syntax enable
+syntax on
 set background=dark
+let g:solarized_termcolors=16
+let g:solarized_degrade = 0
 colorscheme solarized  " zellner
-let g:airline_theme  'solarized'
+let g:airline_theme='solarized'
 
 " Use Source Code Pro font
 set anti enc=utf-8
