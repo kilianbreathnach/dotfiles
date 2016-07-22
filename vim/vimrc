@@ -29,6 +29,7 @@ Plugin 'wincent/Command-T'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'ervandew/supertab'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
 
 " Extra handy functionality
@@ -44,8 +45,10 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'mhinz/vim-startify'
 Plugin 'vim-scripts/slimv.vim'
+Plugin 'mileszs/ack.vim'
 
 " syntax stuff
+Plugin 'Chiel92/vim-autoformat'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'sjl/vim-sparkup'
@@ -55,6 +58,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'JuliaLang/julia-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -98,10 +102,11 @@ set wrap
 set colorcolumn=79              " to show where to break lines
 set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
 
-" set theme
+" set themes
 syntax enable
 set background=dark
-colorscheme zellner
+colorscheme solarized  " zellner
+let g:airline_theme  'solarized'
 
 " Use Source Code Pro font
 set anti enc=utf-8
@@ -113,6 +118,14 @@ set smartcase			" unless uppercase letters are used in the
                                 " regex.
 set hlsearch			" Highlight searches by default.
 set incsearch			" Incrementally search while typing a /regex
+
+" use ag for ack.vim
+if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+        nnoremap ack ag
+endif
+
+
 
 " Then to unhighlight the search
 nnoremap /<cr> :nohlsearch<cr>
@@ -209,7 +222,7 @@ vmap <leader>y ygv\\P
 " ------------------------
 
 " Source some special settings for python and C to comply with PEP 8
-so ~/.vim/pythonvimrc
+" so ~/.vim/pythonvimrc
 
 " Make short tabs for html format
 au BufRead,BufNewFile *html set shiftwidth=2
