@@ -14,5 +14,9 @@ extra building is required for some of them
 * command-t
 * YouCompleteMe
 
+Similarly, to update any changes to i3, use the command
 
-TODO: bash configuration needs to be cleaned up a bit but this is more of an issue with my filesystem organisation.
+    git fetch i3 master
+    git subtree pull --prefix i3 i3 master --squash
+
+TODO: fix bash and zshrc stuff
