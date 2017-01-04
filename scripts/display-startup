@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+function hdmi-is-connected {
+        ! xrandr | grep HDMI2 | grep disconnected
+}
+
+HOST=$(hostname)
+
+if [[ "$HOST" == "debian" ]]; then
+        if hdmi-is-connected; then
+                bash /home/christoph/.i3/scripts/monitor-fonts
+                xrandr --output HDMI2 --mode 1920x1080 --output eDP1 --off
+        else
+                xrandr --output HDMI2 --off --output eDP1 --mode 2560x1440
+                xrandr --output eDP1 --dpi 144
+                bash /home/christoph/.i3/scripts/laptop-fonts
+        fi
+elif [[ "$HOST" == "m73" ]]; then
+        bash /home/christoph/.i3/scripts/monitor-fonts
+        xrandr --output HDMI1 --mode 1920x1080 --output VGA1 --off
+fi

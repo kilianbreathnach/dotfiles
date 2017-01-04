@@ -1,0 +1,39 @@
+#!/bin/bash
+
+ICON=""
+ERROR_COLOR=`cat ~/.colors | grep base08 | cut -d = -f 2`
+SYNCING_COLOR=`cat ~/.colors | grep base0E | cut -d = -f 2`
+PAUSED_COLOR=`cat ~/.colors | grep base0A | cut -d = -f 2`
+
+if [[ $(insync get_status | grep -Fo 'seem to be running. Start it first') ]]; then
+        COLOR=`echo $ERROR_COLOR`
+elif [[ $(insync get_status | grep -Fo 'OFFLINE') ]]; then
+        COLOR=`echo $ERROR_COLOR`
+elif [[ $(insync get_status | grep -Fo 'ERROR') ]]; then
+        COLOR=`echo $ERROR_COLOR`
+elif [[ $(insync get_status | grep -Fo 'SYNCED') ]]; then
+        COLOR=""
+elif [[ $(insync get_status | grep -Fo 'FEED') ]]; then
+        COLOR=""
+elif [[ $(insync get_status | grep -Fo 'SHARE') ]]; then
+        COLOR=""
+elif [[ $(insync get_status | grep -Fo 'PAUSED') ]]; then
+        COLOR=`echo $PAUSED_COLOR`
+elif [[ $(insync get_status | grep -Fo 'SYNCING') ]]; then
+        COLOR=`echo $SYNCING_COLOR`
+else
+        COLOR=`echo $ERROR_COLOR`
+fi
+
+# Click to see status:
+if [[ $BLOCK_BUTTON == '1' ]]; then
+        notify-send "`echo $(insync get_recent_changes)`" \
+                -i /usr/share/icons/Numix-Circle/scalable/apps/google-drive.svg
+elif [[ $BLOCK_BUTTON == '3' ]]; then
+        notify-send "`echo $(insync get_status)`" \
+                -i /usr/share/icons/Numix-Circle/scalable/apps/google-drive.svg
+fi
+
+echo $ICON
+echo $ICON
+echo $COLOR
