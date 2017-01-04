@@ -80,6 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+bindkey -v
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
