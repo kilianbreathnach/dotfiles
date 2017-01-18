@@ -12,33 +12,35 @@ set -o vi
 
 # first see which server I'm on
 
-if [ "$HOSTNAME" = "harmattan" ]; then
-  export pathext="/harmattanhome";
-elif [ "$HOSTNAME" = "SIROCCO.COSMO.FAS.NYU.EDU" ]; then
-  export pathext="/siroccohome";
-else
-  export pathext="";
-fi
+# if [ "$HOSTNAME" = "harmattan.cosmo.fas.nyu.edu" ]; then
+#   export pathext="/harmattanhome";
+# elif [ "$HOSTNAME" = "SIROCCO.COSMO.FAS.NYU.EDU" ]; then
+#   export pathext="/siroccohome";
+# else
+#   export pathext="";
+# fi
+
+export pathext="";
 
 ## Python things ##
+
+# Get the path to my new modules
+PYTHONPATH=$HOME$pathext/lib:${PYTHONPATH}
+export PYTHONPATH
 
 # virtualenvwrapperstuff
 export WORKON_HOME=$HOME$pathext/virtualenvs
 export PROJECT_HOME=$HOME/dev
 source $HOME$pathext/bin/virtualenvwrapper.sh
 
-# Get the path to my new modules
-PYTHONPATH=$HOME$pathext/lib:${PYTHONPATH}
-export PYTHONPATH
+# export GOROOT=$HOME/Software/go
 
-export GOROOT=$HOME/Software/go
-
-PATH=/usr/lib/postgresql/9.1/bin:$PATH
-export PATH
+# PATH=/usr/lib/postgresql/9.1/bin:$PATH
+# export PATH
 
 # adding opt stuff
-PATH=/opt/calibre:$PATH
-export LC_ALL=C
+# PATH=/opt/calibre:$PATH
+# export LC_ALL=C
 
 if [ "$HOSTNAME" = "broiler" ]; then
 
@@ -154,22 +156,29 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # stuff for ruby
-export PATH="$HOME/bin:$HOME/.gem/bin:$PATH"
-export RUBYLIB="$HOME/lib:$RUBYLIB"
-export GEM_HOME="$HOME/.gem"
-export GEM_PATH="/usr/lib/ruby/1.8:$GEM_HOME"
-alias gem="nice -n19 ~/bin/gem"
+# export PATH="$HOME/bin:$HOME/.gem/bin:$PATH"
+# export RUBYLIB="$HOME/lib:$RUBYLIB"
+# export GEM_HOME="$HOME/.gem"
+# export GEM_PATH="/usr/lib/ruby/1.8:$GEM_HOME"
+# alias gem="nice -n19 ~/bin/gem"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/users/kww231/.rvm/rubies/ruby-2.1.2/lib
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/users/kww231/.rvm/rubies/ruby-2.1.2/lib
+
+
+# Path stuff
 
 # have the local environment be the first goto for the PATH and LD_LIBRARY_PATH
 export PATH=$HOME$pathext/bin:$PATH
 
 # and lib and include dirs
 export LD_LIBRARY_PATH=$HOME$pathext/lib64:$HOME$pathext/lib:$LD_LIBRARY_PATH
+
+# if [ "$HOSTNAME" = "harmattan" ]; then
+#   export LD_LIBRARY_PATH=/home/users/kww231/harmattanhome/opt/OpenBLAS/lib:$LD_LIBRARY_PATH
+# fi
 
 export C_INCLUDE_PATH=$HOME$pathext/include:$C_INCLUDE_PATH
 
@@ -178,10 +187,13 @@ export CPLUS_INCLUDE_PATH=$HOME$pathext/include:$CPLUS_INCLUDE_PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # java stuff
-JAVA_HOME=$HOME/java/jdk1.8.0_45
-PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME
-export PATH
+# JAVA_HOME=$HOME/java/jdk1.8.0_45
+# PATH=$JAVA_HOME/bin:$PATH
+# export JAVA_HOME
+# export PATH
 
 # hadoopy
-export PATH=$PATH:$HOME/src/hadoop-2.6.0/bin
+# export PATH=$PATH:$HOME/src/hadoop-2.6.0/bin
+
+# julia playground
+export PATH=$HOME/.playground/bin:$PATH
