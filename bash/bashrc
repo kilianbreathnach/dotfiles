@@ -30,7 +30,7 @@ export PYTHONPATH
 
 # virtualenvwrapperstuff
 export WORKON_HOME=$HOME$pathext/virtualenvs
-export PROJECT_HOME=$HOME/dev
+export PROJECT_HOME=$HOME$pathext/dev
 source $HOME$pathext/bin/virtualenvwrapper.sh
 
 # export GOROOT=$HOME/Software/go
@@ -146,7 +146,7 @@ alias ......='cd ../../..'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # new vim alias for custom install
-alias vim=$HOME$pathext/bin/vim
+# alias vim=$HOME$pathext/bin/vim
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

@@ -1,13 +1,17 @@
 from subprocess import call, Popen, PIPE
 import urllib2
 
+
+### BASH STUFF ###
+
 # First link bash files, assumed to be in dev/dotfiles
+call(["rm", ".bashrc"])
 call(["ln", "-s", "dev/dotfiles/bash/bashrc", ".bashrc"])
+call(["rm", ".bash"])
 call(["ln", "-s", "dev/dotfiles/bash", ".bash"])
 
-# and source the bashrc
-print "- sourcing dotfiles bashrc"
-call(["source", ".bashrc"])
+
+### PYTHON STUFF ###
 
 # now install pip if it doesn't already exist, assuming we have python
 p = Popen(["which", "pip"], stdout=PIPE, stderr=PIPE)
@@ -20,8 +24,14 @@ except StopIteration:
     f = open("get-pip.py", 'w')
     f.write(r.read())
     f.close()
-    call(["python", "get-pip.py", "--user", "--no-wheel"])
+    call(["python", "get-pip.py", "--prefix=$HOME"])
 
 # now to use pip to install virtualenv
-call(["pip", "install", "virtualenvwrapper"])
-    
+call(["pip", "install", "virtualenvwrapper", "--prefix=$HOME"])
+
+
+### VIM STUFF ###
+
+# print "- downloading latest vim to dev"
+#
+# print "- installing local version of vim"
