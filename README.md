@@ -1,7 +1,16 @@
 Repository to keep track of changes to bashrc and vimrc that I would like to have
 across all server accounts.
 
-Vundle.vim is used to manage all the vim plugins, which is added here as a subtree named "vundle". It is updated with the command
+Clone this repository into a directory called dev in the home directory. Then,
+for new setups, link the env_setup.py script into the home directory with
+
+ln -s ~/dev/dotfiles/env_setup.py ~/
+
+and run it with python to link all the dotfiles and install pip and
+virtualenvwrapper. Afterwords, source the bashrc file and then setup vim.
+
+Vundle.vim is used to manage all the vim plugins, which is added here as a
+subtree named "vundle". It is updated with the command
 
     git subtree pull --prefix=vim/bundle/Vundle.vim --squash vundle master
 
