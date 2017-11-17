@@ -1,0 +1,18 @@
+[user]
+    name = Kilian
+    email = kiliantics@gmail.com
+[credential]
+    helper = cache --timeout=3600
+[core]
+    editor = vim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[github]
+    user = kilianbreathnach
+[alias]
+    rao = remote add origin
+    pom = push origin master
