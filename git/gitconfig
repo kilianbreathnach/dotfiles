@@ -1,6 +1,6 @@
 [user]
-    name = Kilian
-    email = kiliantics@gmail.com
+	name = Kilian
+	email = kiliantics@gmail.com
 [credential]
     helper = cache --timeout=3600
 [core]
@@ -12,7 +12,7 @@
 [difftool]
     prompt = false
 [github]
-    user = kilianbreathnach
+	user = kilianbreathnach
 [alias]
     rao = remote add origin
     pom = push origin master

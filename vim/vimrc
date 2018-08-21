@@ -39,12 +39,12 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-surround'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'mhinz/vim-startify'
-Plugin 'vim-scripts/slimv.vim'
+" Plugin 'vim-scripts/slimv.vim'
 Plugin 'mileszs/ack.vim'
 
 " syntax stuff
@@ -58,7 +58,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'JuliaLang/julia-vim'
+Plugin 'JuliaEditorSupport/julia-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -101,6 +101,11 @@ set linebreak
 set wrap
 set colorcolumn=79              " to show where to break lines
 set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
+
+setlocal shiftwidth=4    " default behaviour
+setlocal expandtab
+
+set dir=~/.vimswap    " keep swapfiles out of the way
 
 set t_Co=16
 
@@ -159,7 +164,6 @@ endif
 
 " This part works when compiled with support for autocommands. From original
 " vimrc recommended settings.
-syntax on
 filetype on			" Enable file type detection.
 filetype plugin indent on	" Language-dependent indenting.
 
@@ -240,15 +244,25 @@ let g:lisp_rainbow=1
 " syntastic options
 " -----------------
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_c_checkers=['make','splint']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_julia_checkers = ['lint']
 
 
 " NERDTree settings
 " -----------------
 
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeDirArrows=0

@@ -112,8 +112,8 @@ export TERM='xterm-256color'
 export WORKON_HOME=$HOME/.envs
 source /usr/bin/virtualenvwrapper.sh
 
-echo "Asha is the most amazing person in the world and I like her boobies"
-
-
 alias rte1='mpc clear; mpc add tunein:station:s15066; mpc play'
 export PATH=$HOME/.playground/bin:$PATH
+
+# OPAM configuration
+. /home/kilian/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
