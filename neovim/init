@@ -1,0 +1,199 @@
+" Plugins
+" -------
+
+" From vim-plug tips
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'junegunn/vim-plug'
+
+" layout and appearance
+Plug 'lifepillar/vim-solarized8'
+" Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+
+" language support
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-jedi'
+Plug 'numirias/semshi'
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+
+" Extra handy functionality
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+
+" Settings
+" --------
+
+" basics
+
+set title
+set hidden
+set backspace=indent,eol,start  " Allow backspacing over
+                                " everything in insert mode.
+
+filetype on			" Enable file type detection.
+filetype plugin indent on	" Language-dependent indenting.
+
+set dir=~/.vimswap              " keep swapfiles out of the way
+
+set autoindent
+set smartindent
+set expandtab
+set linebreak
+set wrap
+set colorcolumn=79              " to show where to break lines
+set ww=<,>,[,],h,l	        " Allow navigations beyond EOL
+
+
+" layout themes
+
+setlocal shiftwidth=4           " default behaviour
+syntax on
+set termguicolors
+set background=dark
+colorscheme solarized8
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='minimalist'
+
+
+" completion stuff
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" julia
+let g:default_julia_version = '1.1'
+
+" language server
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+\   'julia': ['julia', '--startup-file=no', '--history-file=no', '-e', '
+\       using LanguageServer;
+\       using Pkg;
+\       import StaticLint;
+\       import SymbolServer;
+\       env_path = dirname(Pkg.Types.Context().env.project_file);
+\       debug = false;
+\
+\       server = LanguageServer.LanguageServerInstance(stdin, stdout, debug, env_path, "", Dict());
+\       server.runlinter = true;
+\       run(server);
+\   ']
+\ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+
+" Searching dfm-style
+
+set ignorecase			" Default to using case insensitive searches,
+set smartcase			" unless uppercase letters are used in the
+                                " regex.
+set hlsearch			" Highlight searches by default.
+set incsearch			" Incrementally search while typing a /regex
+
+" use ag for ack.vim
+if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+        nnoremap ack ag
+endif
+
+" Then to unhighlight the search
+nnoremap /<cr> :nohlsearch<cr>
+
+if has("vms")
+  set nobackup			" Do not keep a backup file, use versions
+else				" instead.
+  set backup			" Keep a backup file
+endif
+
+set history=50			" Keep 50 lines of command line history
+set ruler			" Show the cursor position all the time
+set showcmd			" Display incomplete commands
+
+" This section turns on line-numbering that is toggled with F2
+set numberwidth=3
+highlight LineNr ctermbg=lightblue
+map <F2> :set invnumber<cr>
+
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+au!
+
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+augroup END
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made. Only define it when not
+" defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
+
+
+" Remaps
+" ------
+
+let mapleader = ","
+inoremap jj <ESC>
+
+" Move a line up/down in a file
+nnoremap - ddp
+nnoremap _ ddkkp
+
+
+" Misc
+" ----
+
+" Clean up whitespace at the ends of lines before writing
+autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufNewFile,BufRead *.less set filetype=css
+
+" Enable mouse-clicking
+if has('mouse')
+  set mouse=a
+endif
+
+" For all text files set 'textwidth' to 79 characters.
+autocmd FileType text setlocal textwidth=79

@@ -17,7 +17,7 @@ if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
 fi
 
 # then python stuff
-if [[ -f ".pyenv" ]]; then
+if [[ -d ".pyenv" ]]; then
     echo ".pyenv exists, skipping install"
 else
     if [[ -d "$HOME/dev/pyenv" ]]; then
@@ -27,6 +27,8 @@ else
     fi
 
     ln -s $HOME/dev/pyenv $HOME/.pyenv
+
+    # get necessary environment variables
     source $HOME/.zshenv
     source $HOME/.zshrc
 
@@ -40,9 +42,16 @@ else
     exec zsh
 fi
 
-# finally vim stuff
-if [[ -f ".vimrc" ]]; then
-    echo ".vimrc exists, skipping install"
+# finally neovim stuff
+if ! type "nvim" > /dev/null; then
+    echo "neovim is not installed, cannot set up environment"
 else
+    if [[ -f ".config/nvim/init.vim" ]]; then
+        echo "nvim config exists, skipping setup"
+    else
+	if ! [[ -d ".config/nvim" ]]; then
+	    mkdir -p $HOME/.config/nvim
+        fi
+        ln -s $HOME/dev/dotfiles/neovim/init $HOME/.config/nvim/init.vim
+    fi
 fi
- 
