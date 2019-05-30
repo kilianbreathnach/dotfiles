@@ -125,3 +125,20 @@ export TERM='xterm-256color'
 
 # after setting up pyenv and using pyenv's pip to install pipenv
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+
+checklappy=$(hostname)
+if [[ $checklappy == "archlinux" ]]; then
+
+    # for sway on lappy
+    if [ "$(tty)" = "/dev/tty1" ]; then
+    	# export XDG_RUNTIME_DIR=/tmp
+    	exec sway
+    fi
+
+    # for termite on lappy
+    if [[ $TERM == xterm-termite ]]; then
+      . /etc/profile.d/vte.sh
+      __vte_osc7
+    fi
+fi

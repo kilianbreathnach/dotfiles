@@ -3,3 +3,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+checklappy=$(hostname)
+if [[ $checklappy == "archlinux" ]]; then
+  GDK_BACKEND=wayland  # for wayland
+  v4l2-ctl -d 2  # set default webcam
+fi
