@@ -123,5 +123,9 @@ fi
 
 export TERM='xterm-256color'
 
+
+# include local bin in path
+export PATH=$HOME/bin:$PATH
+
 # after setting up pyenv and using pyenv's pip to install pipenv
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
