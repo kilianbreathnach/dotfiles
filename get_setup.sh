@@ -32,8 +32,7 @@ else
     source $HOME/.zshenv
     source $HOME/.zshrc
 
-    echo "installing python 3.7.3"
-    pyenv install 3.7.3
+    CONFIGURE_OPTS=--enable-shared pyenv install 3.7.3
 
     echo "installing pipenv into pyenv global"
     pyenv global 3.7.3
