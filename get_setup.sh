@@ -37,8 +37,12 @@ else
     # echo "installing pipenv into pyenv global"
     pyenv global 3.7.4
     # pip install pipenv
+
+    # poetry stuff and zsh compatibility
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-    poetry completions zsh > ~/.zfunc/_poetry
+    source $HOME/.poetry/env
+    mkdir $ZSH/plugins/poetry
+    poetry completions zsh > $ZSH/plugins/poetry/_poetry
 
     exec zsh
 fi

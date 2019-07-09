@@ -130,9 +130,6 @@ export PATH=$HOME/bin:$PATH
 # after setting up pyenv and using pyenv's pip to install pipenv
 export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 
-# poetry stuff
-fpath+=~/.zfunc
-
 
 checklappy=$(hostname)
 if [[ $checklappy == "archlinux" ]]; then
