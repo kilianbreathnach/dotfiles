@@ -32,11 +32,13 @@ else
     source $HOME/.zshenv
     source $HOME/.zshrc
 
-    CONFIGURE_OPTS=--enable-shared pyenv install 3.7.3
+    CONFIGURE_OPTS=--enable-shared pyenv install 3.7.4
 
-    echo "installing pipenv into pyenv global"
-    pyenv global 3.7.3
-    pip install pipenv
+    # echo "installing pipenv into pyenv global"
+    pyenv global 3.7.4
+    # pip install pipenv
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    poetry completions zsh > ~/.zfunc/_poetry
 
     exec zsh
 fi
