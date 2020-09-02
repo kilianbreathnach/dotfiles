@@ -32,10 +32,10 @@ else
     source $HOME/.zshenv
     source $HOME/.zshrc
 
-    CONFIGURE_OPTS=--enable-shared pyenv install 3.7.4
+    CONFIGURE_OPTS=--enable-shared pyenv install 3.8.5
 
     # echo "installing pipenv into pyenv global"
-    pyenv global 3.7.4
+    pyenv global 3.8.5
     # pip install pipenv
 
     # poetry stuff and zsh compatibility
